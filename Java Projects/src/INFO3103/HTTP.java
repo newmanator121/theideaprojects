@@ -18,6 +18,8 @@ public class HTTP {
         int portNum;
         CharSequence compare1 = "http";
         CharSequence compare2 = "https";
+        String command;
+
 
 
         //Getting the Protocol
@@ -61,22 +63,28 @@ public class HTTP {
 
         try {
             URL theURL = new URL(protocol, domainName, portNum, documentPath);
-            System.out.println("HERE" + theURL.toString());
-
+            System.out.println("HERE    " + theURL.toString());
             BufferedReader in = new BufferedReader(new InputStreamReader(theURL.openStream()));
-            //URLConnection newURLConnection = theURL.openConnection();
-            //newURLConnection.connect();
+            String[] terminalCommand = new String[] {"xterm -hold -e ","wget -O AlexTest.html " + theURL.toString()};
 
             String input;
             while((input = in.readLine()) != null) {
                 System.out.println(input);
             }
             in.close();
+
+            ProcessBuilder pb = new ProcessBuilder("xterm","wget -O ~/Desktop/AlexTest.html" + theURL.toString());
+            Process p = pb.start();
+            p.waitFor();
+
         }catch(MalformedURLException e) {
             System.out.println("Caught a bad URL OH No!" + e.getMessage());
         }
         catch(IOException IOE) {
-            System.out.println("Caught a bad URL Connection OH No!");
+            System.out.println("Caught a bad URL Connection OH No!" + IOE.getMessage());
+        }
+        catch(InterruptedException IOE) {
+            System.out.println("Interrupt   " + IOE.getMessage());
         }
 
         //Grab the file using wget
