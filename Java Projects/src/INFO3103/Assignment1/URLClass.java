@@ -1,3 +1,5 @@
+//package INFO3103.Assignment1;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -68,9 +70,8 @@ public class URLClass {
 
 
             //This grabs the HTTP header information
-            URLConnection newConnec = null;
-            newConnec = theURL.openConnection();
-            System.out.println("\n" + "\n" + "Header Fields " + newConnec.getHeaderFields());
+            URLConnection newConnec = theURL.openConnection();
+            System.out.println("\n" + "\n" + "Header Fields " + "\n" + "\n" + newConnec.getHeaderFields());
 
 
         }catch(MalformedURLException e) {
