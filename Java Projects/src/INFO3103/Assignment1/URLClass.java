@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
+import java.net.URLConnection;
 
 public class URLClass {
     public static void main(String[] args) {
@@ -63,9 +64,15 @@ public class URLClass {
             in.close();
 
             //Will open a stream to the webpage using URL java methods and puts it into the users Desktop directory
-            Path pth = Paths.get(System.getProperty("user.home"),"Desktop", "index.html.html");
+            Path pth = Paths.get(System.getProperty("user.home"),"Desktop",documentPath);
             InputStream urlFileIn = theURL.openStream();
             Files.copy(urlFileIn,pth,StandardCopyOption.REPLACE_EXISTING);
+
+
+            //This grabs the HTTP header information
+            URLConnection newConnec = null;
+            newConnec = theURL.openConnection();
+            System.out.println("\n" + "\n" + "Header Fields " + newConnec.getHeaderFields());
 
 
         }catch(MalformedURLException e) {
