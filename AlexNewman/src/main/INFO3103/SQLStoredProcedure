@@ -1,0 +1,28 @@
+
+#PART A
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS "addQuote" //
+
+CREATE PROCEDURE getQuote(IN quote VARCHAR(65535))
+begin
+ INSERT INTO quotes(columns)
+    VALUE(quote);
+end//
+DELIMITER ;
+
+#PART B
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS "getquote" //
+
+CREATE PROCEDURE getquote()
+begin
+  SELECT * FROM quotes
+		ORDER BY rand() limit 1;
+end//
+DELIMITER ;
+
+
+
+
