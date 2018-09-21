@@ -1,0 +1,10 @@
+DELIMITER //
+DROP PROCEDURE IF EXISTS getQuote //
+
+CREATE PROCEDURE getQuote()
+begin
+  SELECT * FROM quote
+    ORDER BY RAND() limit 1;
+
+end//
+DELIMITER ;
