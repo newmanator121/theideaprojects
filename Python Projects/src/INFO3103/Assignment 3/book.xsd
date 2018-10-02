@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+
+<element name="Book">
+    <complexType mixed="true">
+        <sequence>
+
+            <element name="title" type="string"/>
+
+            <element name="Author" type="string"/>
+
+            <element name="edition" type="string"/>
+
+            <element name="discipline" type="string"/>
+
+            <element name="publisher" type="string"/>
+
+            <element name="seller contract" type="string"/>
+                <complexType>
+                    <sequence>
+                        <element name="nameofSeller" type="string" />
+                        <element name="email" type="string" />
+                    </sequence>
+                </complexType>
+
+
+            <element name="image" type="string"/>
+        </sequence>
+    </complexType>
+</element>
