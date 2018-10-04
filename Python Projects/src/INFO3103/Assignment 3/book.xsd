@@ -1,30 +1,64 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:element name="title" type="xs:string">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[A-Za-z\s']+"/>
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="author" type="xs:string">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[A-Za-z\s']+"/>
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="unbounded"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="edition" type="xs:integer">
+                <xs:simpleType>
+                    <xs:restriction base="xs:integer">
+                        <xs:minInclusive value=""/>
+                        <xs:maxInclusive value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="discipline" type="xs:string">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[A-Za-z\s']+"/>
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="unbounded"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="publisher" type="xs:string">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[A-Za-z\s']+"/>
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="SellerContract" type="xs:string">
+                <xs:minInclusive value="1"/>
+                <xs:maxInclusive value="1"/>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" type="xs:string"/>
+                        <xs:element name="email" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+</xs:schema>
 
 
-<element name="Book">
-    <complexType mixed="true">
-        <sequence>
-
-            <element name="title" type="string"/>
-
-            <element name="Author" type="string"/>
-
-            <element name="edition" type="string"/>
-
-            <element name="discipline" type="string"/>
-
-            <element name="publisher" type="string"/>
-
-            <element name="seller contract" type="string"/>
-                <complexType>
-                    <sequence>
-                        <element name="nameofSeller" type="string" />
-                        <element name="email" type="string" />
-                    </sequence>
-                </complexType>
-
-
-            <element name="image" type="string"/>
-        </sequence>
-    </complexType>
-</element>

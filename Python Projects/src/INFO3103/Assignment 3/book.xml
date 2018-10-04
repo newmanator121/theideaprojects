@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<note xmlns="https://www.w3schools.com"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="book.xsd">
+
+    <title>The Wonderful Tales of CS-An Algorithm Design Trip</title>
+    <author>Alexander</author>
+    <edition>1</edition>
+    <discipline>CS</discipline>
+    <publisher>AlexNewman Designs</publisher>
+    <SellerContract>
+        <name>Alex</name>
+        <email>alexander.newman@unb.ca</email>
+    </SellerContract>
+
+    <ImageLocation>
+
+        Content:
+        { xs:DSC_1092.jpg }
+    </ImageLocation>
+
+</note>
