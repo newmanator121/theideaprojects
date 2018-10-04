@@ -3,20 +3,35 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="book.xsd">
 
-    <title>The Wonderful Tales of CS-An Algorithm Design Trip</title>
-    <author>Alexander</author>
-    <edition>1</edition>
-    <discipline>CS</discipline>
-    <publisher>AlexNewman Designs</publisher>
-    <SellerContract>
+    <title>
+        The Wonderful Tales of CS-An Algorithm Design Trip
+    </title>
+
+
+    <author>
+        Alexander
+    </author>
+
+    <edition>
+        1
+    </edition>
+
+    <discipline>
+        CS
+    </discipline>
+
+    <publisher>
+        AlexNewman Designs
+    </publisher>
+
+
+    <SellerContact>
         <name>Alex</name>
         <email>alexander.newman@unb.ca</email>
-    </SellerContract>
+    </SellerContact>
 
-    <ImageLocation>
-
-        Content:
-        { xs:DSC_1092.jpg }
-    </ImageLocation>
+  <image>
+      <theImage src="https://i.imgur.com/ukamLsg.jpg" />
+  </image>
 
 </note>
