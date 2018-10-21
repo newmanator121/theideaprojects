@@ -1,0 +1,8 @@
+DELIMITER //
+DROP PROCEDURE IF EXISTS getAllItems //
+
+CREATE PROCEDURE getAllItems()
+begin
+  SELECT * FROM itemsTable;
+end//
+DELIMITER ;

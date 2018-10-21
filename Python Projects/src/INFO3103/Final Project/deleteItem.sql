@@ -1,0 +1,8 @@
+DELIMITER //
+DROP PROCEDURE IF EXISTS deleteItem//
+
+CREATE PROCEDURE deleteItem(IN itemIdIN int)
+BEGIN
+DELETE FROM itemsTable WHERE itemID = itemIdIN;
+END//
+DELIMITER ;

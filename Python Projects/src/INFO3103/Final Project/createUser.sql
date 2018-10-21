@@ -1,0 +1,10 @@
+DELIMITER //
+DROP PROCEDURE IF EXISTS createUser //
+
+CREATE PROCEDURE createUser(IN userNameIN varchar(255))
+BEGIN
+INSERT INTO usersTable (userName) VALUES
+   (userNameIN);
+SELECT LAST_INSERT_ID();
+END//
+DELIMITER ;

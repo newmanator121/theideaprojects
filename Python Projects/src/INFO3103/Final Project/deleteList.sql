@@ -1,0 +1,8 @@
+DELIMITER //
+DROP PROCEDURE IF EXISTS deleteList//
+
+CREATE PROCEDURE deleteList(IN listIdIN int)
+BEGIN
+DELETE FROM listsTable WHERE listID = listIdIN;
+END//
+DELIMITER ;
