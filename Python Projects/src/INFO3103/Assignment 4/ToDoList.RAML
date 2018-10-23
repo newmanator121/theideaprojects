@@ -1,0 +1,110 @@
+#RAML 1.0
+title: To-Do List API
+
+/users
+  {userID}
+  type: Collection
+    get:
+        description: Returns a username resource for a sopecific user
+          queryParameters:
+            userID:
+              "A userID that matches that of a user in the table"
+        responses:
+          200:
+            body:
+              application/json
+
+    post:
+     description: Adds a user resource to the users table
+
+      body:
+        application/json
+
+      responses:
+        200:
+          body:
+            application/json
+
+/users/userID
+  {userList}
+  type: Collection
+      get:
+          description: Returns a user list resource for a sopecific user
+            queryParameters:
+              userList:
+                "Returns the list for a specific user"
+          responses:
+            200:
+              body:
+                application/json
+
+      post:
+       description: Adds a user  To-Do list for specific userID
+
+        body:
+          application/json
+
+        responses:
+          200:
+            body:
+              application/json
+      delete:
+        description: Delets a list for a specific user
+          responses:
+            200:
+              body:
+                application/json
+                  example: {"message:" "The list has been successfully removed"}
+
+      put:
+        description: Will update a users list, like name for example
+         responses:
+            200:
+              body:
+                application/json
+                  example: {"message:" "The list has been successfully updated"}
+
+/users/userID/userList
+  {listTask}
+  type: Collection
+      get:
+          description: Returns a users specific list task
+            queryParameters:
+              listTask:
+                "A specific task that a user has put into their list"
+          responses:
+            200:
+              body:
+                application/json
+
+      post:
+       description: Adds a task to the To-Do list for specific userID
+
+        body:
+          application/json
+
+        responses:
+          200:
+            body:
+              application/json
+      delete:
+        description: Delets a task in a list for that userID
+          responses:
+            200:
+              body:
+                application/json
+                  example: {"message:" "The task has been successfully removed"}
+
+      put:
+        description: Will update a users task in their list
+          responses:
+            200:
+              body:
+                application/json
+                  example: {"message:" "The task has been successfully updated"}
+
+
+
+
+
+
