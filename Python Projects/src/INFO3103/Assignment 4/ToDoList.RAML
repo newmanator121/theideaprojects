@@ -74,17 +74,6 @@ title: To-Do List API
             200:
               body:
                 application/json
-
-      post:
-        description: Creates a new list item/task in a spoecific list for that users.
-         body:
-           application/json
-
-         responses:
-           200:
-             body:
-               application/json
-               
                
       delete:
         description: Deletes a certain list.
@@ -131,6 +120,19 @@ title: To-Do List API
               body:
                 application/json
                   example: {"message:" "The task has been successfully updated"}
+                  
+                  
+      
+      post:
+        description: Creates a new list item/task in a spoecific list for that users.
+         body:
+           application/json
+
+         responses:
+           200:
+             body:
+               application/json
+                           
 
 
 
