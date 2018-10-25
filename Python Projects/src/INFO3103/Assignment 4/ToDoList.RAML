@@ -66,7 +66,7 @@ title: To-Do List API
   {listID}
   type: Collection
       get:
-          description: Returns all lists for the specific userID
+          description: Returns a specific list with all its items
              queryParameters:
                 listID:
                   "Takes in a single ID(Int) and returns the resource for that specific list"
@@ -91,6 +91,18 @@ title: To-Do List API
               body:
                 application/json
                   example: {"message:" "The list has been successfully updated"}
+                  
+                        
+      post:
+        description: Creates a new list item/task in a specific list for that users.
+         body:
+           application/json
+
+         responses:
+           200:
+             body:
+               application/json
+                           
         
 
 
@@ -104,14 +116,24 @@ title: To-Do List API
 /users/userID/lists/listID/itemID
 {itemID}
 
-      delete:
-        description: Deletes a certain list item/task.
+  get:
+    description: Returns a specific item in the list
+       queryParameters:
+          listID:
+            "Takes in a single ID(Int) and returns the resource for that specific list"
+    responses:
+      200:
+        body:
+          application/json
 
-          responses:
-            200:
-              body:
-                application/json
-                  example: {"message:" "The task has been successfully removed"}
+   delete:
+     description: Deletes a certain list item/task.
+
+      responses:
+        200:
+          body:
+            application/json
+              example: {"message:" "The task has been successfully removed"}
 
       put:
         description: Will update a users task i.e itemName changed eggs tgo large eggs
@@ -121,19 +143,7 @@ title: To-Do List API
                 application/json
                   example: {"message:" "The task has been successfully updated"}
                   
-                  
-      
-      post:
-        description: Creates a new list item/task in a spoecific list for that users.
-         body:
-           application/json
-
-         responses:
-           200:
-             body:
-               application/json
-                           
-
+          
 
 
 
