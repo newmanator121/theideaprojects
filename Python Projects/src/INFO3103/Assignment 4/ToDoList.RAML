@@ -17,22 +17,24 @@ title: To-Do List API
         application/json
 
       responses:
-        200:
+        200/201:
           body:
             application/json
+              example:
+                "Resource Created"
 
 /users/userID
   {userID}
   type: Collection
       get:
-          description: Returns information for a specific user based off userID
-            queryParameters:
-              userID:
-                "Takes in a single ID(Int) and returns the resource for that specific user"
-          responses:
-            200:
-              body:
-                application/json
+        description: Returns information for a specific user based off userID
+          queryParameters:
+            userID:
+              "Takes in a single ID(Int) and returns the resource for that specific user"
+        responses:
+          200:
+            body:
+              application/json
 
       delete:
         description: Deletes a specific user, based off thier credentials. Will be removed from users table
@@ -58,7 +60,7 @@ title: To-Do List API
            application/json
 
          responses:
-           200:
+           200/201:
              body:
                application/json
 
@@ -87,7 +89,7 @@ title: To-Do List API
       put:
         description: Will update a users list i.e listname
           responses:
-            200:
+            200/201:
               body:
                 application/json
                   example: {"message:" "The list has been successfully updated"}
@@ -99,20 +101,10 @@ title: To-Do List API
            application/json
 
          responses:
-           200:
+           200/201:
              body:
                application/json
                            
-        
-
-
-
-
-
-
-
-
-
 /users/userID/lists/listID/itemID
 {itemID}
 
@@ -133,7 +125,7 @@ title: To-Do List API
         200:
           body:
             application/json
-              example: {"message:" "The task has been successfully removed"}
+              example: {"message:" "The item has been successfully removed"}
 
       put:
         description: Will update a users task i.e itemName changed eggs tgo large eggs
@@ -141,7 +133,7 @@ title: To-Do List API
             200:
               body:
                 application/json
-                  example: {"message:" "The task has been successfully updated"}
+                  example: {"message:" "The item has been successfully updated"}
                   
           
 
