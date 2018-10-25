@@ -2,13 +2,9 @@
 title: To-Do List API
 
 /users
-  {userID}
   type: Collection
     get:
-        description: Returns a username resource for a sopecific user
-          queryParameters:
-            userID:
-              "A userID that matches that of a user in the table"
+        description: Returns all usernames in the tableser
         responses:
           200:
             body:
@@ -26,30 +22,49 @@ title: To-Do List API
             application/json
 
 /users/userID
-  {userList}
+  {userID}
   type: Collection
       get:
-          description: Returns a user list resource for a sopecific user
+          description: Returns information for a specific user based off userID
             queryParameters:
-              userList:
-                "Returns the list for a specific user"
+              userID:
+                "Takes in a single ID(Int) and returns the resource for that specific user"
+          responses:
+            200:
+              body:
+                application/json
+
+      delete:
+        description: Deletes a specific user, based off thier credentials. Will be removed from users table
+          responses:
+            200:
+              body:
+                application/json
+                  example: {"message:" "User[userID] has been successfully removed"}
+
+/users/userID/lists
+  type: Collection
+      get:
+          description: Returns all lists for the specific userID
+
           responses:
             200:
               body:
                 application/json
 
       post:
-       description: Adds a user  To-Do list for specific userID
+        description: Creates a new list for that users.
+         body:
+           application/json
 
-        body:
-          application/json
+         responses:
+           200:
+             body:
+               application/json
 
-        responses:
-          200:
-            body:
-              application/json
       delete:
-        description: Delets a list for a specific user
+        description: Deletes a certain list.
+
           responses:
             200:
               body:
@@ -57,38 +72,39 @@ title: To-Do List API
                   example: {"message:" "The list has been successfully removed"}
 
       put:
-        description: Will update a users list, like name for example
-         responses:
+        description: Will update a users list i.e listname
+          responses:
             200:
               body:
                 application/json
                   example: {"message:" "The list has been successfully updated"}
 
-/users/userID/userList
-  {listTask}
+/users/userID/lists/listID
+  {listID}
   type: Collection
       get:
-          description: Returns a users specific list task
-            queryParameters:
-              listTask:
-                "A specific task that a user has put into their list"
+          description: Returns all lists for the specific userID
+             queryParameters:
+                listID:
+                  "Takes in a single ID(Int) and returns the resource for that specific list"
           responses:
             200:
               body:
                 application/json
 
       post:
-       description: Adds a task to the To-Do list for specific userID
+        description: Creates a new list item/task in a spoecific list for that users.
+         body:
+           application/json
 
-        body:
-          application/json
+         responses:
+           200:
+             body:
+               application/json
 
-        responses:
-          200:
-            body:
-              application/json
       delete:
-        description: Delets a task in a list for that userID
+        description: Deletes a certain list item/task.
+
           responses:
             200:
               body:
@@ -96,7 +112,7 @@ title: To-Do List API
                   example: {"message:" "The task has been successfully removed"}
 
       put:
-        description: Will update a users task in their list
+        description: Will update a users task i.e itemName changed eggs tgo large eggs
           responses:
             200:
               body:
