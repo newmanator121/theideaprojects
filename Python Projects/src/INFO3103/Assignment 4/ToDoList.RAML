@@ -62,23 +62,6 @@ title: To-Do List API
              body:
                application/json
 
-      delete:
-        description: Deletes a certain list.
-
-          responses:
-            200:
-              body:
-                application/json
-                  example: {"message:" "The list has been successfully removed"}
-
-      put:
-        description: Will update a users list i.e listname
-          responses:
-            200:
-              body:
-                application/json
-                  example: {"message:" "The list has been successfully updated"}
-
 /users/userID/lists/listID
   {listID}
   type: Collection
@@ -101,6 +84,36 @@ title: To-Do List API
            200:
              body:
                application/json
+               
+               
+      delete:
+        description: Deletes a certain list.
+
+          responses:
+            200:
+              body:
+                application/json
+                  example: {"message:" "The list has been successfully removed"}
+
+      put:
+        description: Will update a users list i.e listname
+          responses:
+            200:
+              body:
+                application/json
+                  example: {"message:" "The list has been successfully updated"}
+        
+
+
+
+
+
+
+
+
+
+/users/userID/lists/listID/itemID
+{itemID}
 
       delete:
         description: Deletes a certain list item/task.
