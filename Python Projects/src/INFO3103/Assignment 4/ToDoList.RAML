@@ -4,37 +4,58 @@ title: To-Do List API
 /users
   type: Collection
     get:
-        description: Returns all usernames in the tableser
+        description: Returns all usernames in the table user
         responses:
           200:
             body:
               application/json
+               example:
+                  {
+                    id: "1",
+                    userName: "Example USERNAME",
+                }
 
     post:
      description: Adds a user resource to the users table
-
+      queryParameters:
+        userName:
+            userID: An assigned value
+            required: true
+            type: string
       body:
         application/json
-
       responses:
         200/201:
           body:
             application/json
               example:
-                "Resource Created"
+              {
+               message: "Resource Created"
+              }
+        400:
+          body:
+            application/json
+              example:
+                {
+                message: "user not created. Check syntax"
+                }
 
-/users/userID
+/user/userID
   {userID}
   type: Collection
       get:
         description: Returns information for a specific user based off userID
-          queryParameters:
-            userID:
-              "Takes in a single ID(Int) and returns the resource for that specific user"
         responses:
           200:
             body:
               application/json
+          404:
+            body:
+              application/json
+                example:
+                  {
+                   message: "Cannot GET user"
+                  }
 
       delete:
         description: Deletes a specific user, based off thier credentials. Will be removed from users table
@@ -42,7 +63,26 @@ title: To-Do List API
             200:
               body:
                 application/json
-                  example: {"message:" "User[userID] has been successfully removed"}
+                  example:
+                  {
+                    message: "User[userID] has been successfully removed"
+                  }
+
+            403:
+              body:
+                application/json
+                  example:
+                    {
+                      message: "Cannot delete user, user does not have proper authorization."
+                    }
+
+            404:
+              body:
+                application/json
+                  example:
+                    {
+                      message: "The user cannot be found"
+                    }
 
 /users/userID/lists
   type: Collection
@@ -53,50 +93,116 @@ title: To-Do List API
             200:
               body:
                 application/json
+                  example:
+                    {
+                      id: "01",
+                      listName: "Groceries",
+                      itemName: "Eggs" etc..
+                    }
+            404:
+              body:
+                application/json
+                  example:
+                    {
+                      message: "Cannot retrieve a list as resource doesnt exists"
+                    }
 
       post:
         description: Creates a new list for that users.
+           queryParameters:
+                    listName: Takes int the name of a certain list
+                    required: true
+                    type: string
          body:
            application/json
 
          responses:
            200/201:
-             body:
-               application/json
+              body:
+                application/json
+            400:
+              body:
+                application/json
+                  example:
+                    {
+                      listName: "listName",
+                      message: "Cannot create the list"
+                    }
 
 /users/userID/lists/listID
   {listID}
   type: Collection
       get:
           description: Returns a specific list with all its items
-             queryParameters:
-                listID:
-                  "Takes in a single ID(Int) and returns the resource for that specific list"
           responses:
             200:
               body:
                 application/json
+                  example:
+                    {
+                      userID: "userID",
+                      listName: "The name of list",
+                      itemID: "ID for a certain item",
+                      itemName: "The name of the actual item"
+                    }
+                }
+
+            404:
+              body:
+                application/json
+                  example:
+                    {
+                      message: "Cannot retrieve the item"
+                    }
                
       delete:
         description: Deletes a certain list.
-
           responses:
             200:
               body:
                 application/json
-                  example: {"message:" "The list has been successfully removed"}
+                  example:
+                  {
+                    message: "The list has been successfully removed"
+                  }
+
+            403:
+             body:
+               application/json
+                 example:
+                   {
+                     message: "The user does not have authorization to delete"
+                   }
 
       put:
         description: Will update a users list i.e listname
+         queryParameters:
+          listName:
+            required: true
+            type: string
+
           responses:
             200/201:
               body:
                 application/json
-                  example: {"message:" "The list has been successfully updated"}
-                  
+                  example:
+                  {
+                    message: "The list has been successfully updated"
+                  }
+            403:
+              body:
+                application/json
+                  example:
+                    {
+                      message: "The user does not have the authorization to delete this resource "
+                    }
                         
       post:
         description: Creates a new list item/task in a specific list for that users.
+            queryParameters:
+              listItem:
+                required: true
+                type: string
          body:
            application/json
 
@@ -104,19 +210,45 @@ title: To-Do List API
            200/201:
              body:
                application/json
+                {
+                  message: "You have successfully added an item"
+                }
+
+          403:
+            body:
+              application/json
+                example:
+                  {
+                    message: "User does not have authorization to create resource"
+                  }
+          400:
+            body:
+              application/json
+                example:
+                  {
+                    message: "Something went wrong when trying to perform POST"
+                  }
                            
 /users/userID/lists/listID/itemID
 {itemID}
 
   get:
     description: Returns a specific item in the list
-       queryParameters:
-          listID:
-            "Takes in a single ID(Int) and returns the resource for that specific list"
     responses:
       200:
         body:
           application/json
+            {
+              itemID: "Of type int i.e 4",
+              itemName: "a certain item i.e eggs"
+            }
+      404:
+        body:
+          application/json
+            example:
+              {
+                message: "Item cannot be found ro does not exist"
+              }
 
    delete:
      description: Deletes a certain list item/task.
@@ -125,15 +257,37 @@ title: To-Do List API
         200:
           body:
             application/json
-              example: {"message:" "The item has been successfully removed"}
+              example:
+              {
+                message: "The item has been successfully removed"
+              }
+        403:
+          body:
+            application/json
+              example:
+                {
+                  message: "The user does not have authorization to delete"
+                }
 
-      put:
-        description: Will update a users task i.e itemName changed eggs tgo large eggs
-          responses:
-            200:
-              body:
-                application/json
-                  example: {"message:" "The item has been successfully updated"}
+
+
+    put:
+      description: Will update a users task i.e itemName changed eggs tgo large eggs
+        responses:
+          200:
+            body:
+              application/json
+                example:
+                {
+                  message: "The item has been successfully updated"
+                }
+          403:
+            body:
+              application/json
+                example:
+                  {
+                    message: "The user does not have authorization to modify"
+                  }
                   
           
 
