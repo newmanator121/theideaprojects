@@ -4,7 +4,7 @@ title: To-Do List API
 /users
   type: Collection
     get:
-        description: Returns all usernames in the table user
+      description: Returns all usernames in the table user
         responses:
           200:
             body:
@@ -30,14 +30,14 @@ title: To-Do List API
             application/json
               example:
               {
-               message: "Resource Created"
+                message: "Resource Created"
               }
         400:
           body:
             application/json
               example:
                 {
-                message: "user not created. Check syntax"
+                  message: "user not created. Check syntax"
                 }
 
 /user/userID
@@ -49,12 +49,17 @@ title: To-Do List API
           200:
             body:
               application/json
+              {
+                userID: "1"
+
+              }
+
           404:
             body:
               application/json
                 example:
                   {
-                   message: "Cannot GET user"
+                    message: "Cannot GET user"
                   }
 
       delete:
@@ -133,7 +138,7 @@ title: To-Do List API
   {listID}
   type: Collection
       get:
-          description: Returns a specific list with all its items
+        description: Returns a specific list with all its items
           responses:
             200:
               body:
@@ -145,7 +150,6 @@ title: To-Do List API
                       itemID: "ID for a certain item",
                       itemName: "The name of the actual item"
                     }
-                }
 
             404:
               body:
@@ -154,7 +158,38 @@ title: To-Do List API
                     {
                       message: "Cannot retrieve the item"
                     }
-               
+
+      post:
+        description: Creates a new list item/task in a specific list for that users.
+            queryParameters:
+              listItem:
+                required: true
+                type: string
+         body:
+           application/json
+
+         responses:
+           200/201:
+             body:
+               application/json
+                {
+                  message: "You have successfully added an item"
+                }
+
+          403:
+            body:
+              application/json
+                example:
+                  {
+                    message: "User does not have authorization to create resource"
+                  }
+          400:
+            body:
+              application/json
+                example:
+                  {
+                    message: "Something went wrong when trying to perform POST"
+                  }
       delete:
         description: Deletes a certain list.
           responses:
@@ -197,37 +232,7 @@ title: To-Do List API
                       message: "The user does not have the authorization to delete this resource "
                     }
                         
-      post:
-        description: Creates a new list item/task in a specific list for that users.
-            queryParameters:
-              listItem:
-                required: true
-                type: string
-         body:
-           application/json
 
-         responses:
-           200/201:
-             body:
-               application/json
-                {
-                  message: "You have successfully added an item"
-                }
-
-          403:
-            body:
-              application/json
-                example:
-                  {
-                    message: "User does not have authorization to create resource"
-                  }
-          400:
-            body:
-              application/json
-                example:
-                  {
-                    message: "Something went wrong when trying to perform POST"
-                  }
                            
 /users/userID/lists/listID/itemID
 {itemID}
@@ -247,12 +252,11 @@ title: To-Do List API
           application/json
             example:
               {
-                message: "Item cannot be found ro does not exist"
+                message: "Item cannot be found or does not exist"
               }
 
    delete:
      description: Deletes a certain list item/task.
-
       responses:
         200:
           body:
@@ -269,10 +273,8 @@ title: To-Do List API
                   message: "The user does not have authorization to delete"
                 }
 
-
-
     put:
-      description: Will update a users task i.e itemName changed eggs tgo large eggs
+      description: Will update a users task i.e itemName changed eggs to large eggs
         responses:
           200:
             body:
@@ -286,12 +288,5 @@ title: To-Do List API
               application/json
                 example:
                   {
-                    message: "The user does not have authorization to modify"
+                    message: "The user does not have authorization to modify this item"
                   }
-                  
-          
-
-
-
-
-
