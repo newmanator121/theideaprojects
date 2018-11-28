@@ -1,8 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+    <!-- production version, optimized for size and speed -->
+    <!DOCTYPE html>
+    <html>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <body>
+    <div id="myDIV" class="header">
+        <h2>My To Do List</h2>
+        <input type="text" id="myInput" placeholder="Title...">
+        <span onclick="newElement()" class="addBtn">Add</span>
+    </div>
+
+    <ul id="myUL">
+        <li v-for="item in Lists">{{item.list}}</li>
+        <button id="removeButton" v-onclick="removeButton()"> </button>
+    </ul>
+
+
+
+    </body>
+</head>
+</html>
+
+<script>
+    var listData = new Vue ({
+      el:'#myUL',
+      data: {
+        Lists :[
+          { list: 'Grocceries' },
+          { list: 'After School' },
+          { list: 'Homework' }
+        ]
+      }
+    });
+
+    var removeFunction = new Vue ({
+      el: '#removeButton',
+      methods: {
+        print: fucntion(){
+          alert("You ahve just removed that item");
+        }
+      }
+    });
+
+    </script>
+
+
+<style>
 body {
   margin: 0;
   min-width: 250px;
@@ -181,57 +227,55 @@ input {
 }
 
 </style>
-</head>
-<body>
 
-<div id="myDIV" class="header">
+
+<!-- <div id="myDIV" class="header">
     <h2 style="margin:5px">User ID</h2>
     <input type="text" id="myInput" placeholder="Title...">
-    <span onclick="newList()" class="addBtn">Add List</span>
+    <span v-onclick="newList()" class="addBtn">Add List</span>
 </div>
 
 <!-- Sidebar -->
-<div class="sidenav">
-    <h1> User List </h1>
-    <a href="https://www.w3schools.com/tags/att_font_color.asp">User 1</a>
-</div>
+<!--<div class="sidenav">-->
+<!--<h1> User List </h1>-->
+<!--<a href="https://www.w3schools.com/tags/att_font_color.asp">User 1</a>-->
+<!--</div>-->
+<!-- <div id="toDoList">
+    <ul id="myUL">
 
-<ul id="myUL">
+        <li  id="testID"  >
+            <label  v-on:click="testVue()"  >List Name</label>
+            <button id="editButton" v-on:click="vueJS POST method" class="editButton">Edit</button>
+            <button v-on:click="testVue()" class="removeButton">Remove</button>
+        </li>
 
-    <li>
-        <label>
-            List Name
-        </label>
-        <span onclick="vueJS POST method" class="editButton">Edit</span>
-        <span onclick="vueJS DELETE method" class="removeButton">Remove</span>
-    </li>
+        <li class="checked">Pay bills
+            <button onclick="vueJS POST method" class="editButton">Edit</button>
+            <button onclick="vueJS DELETE method" class="removeButton">Remove</button>
+        </li>
 
-    <li class="checked">Pay bills
-        <span onclick="vueJS POST method" class="editButton">Edit</span>
-        <span onclick="vueJS DELETE method" class="removeButton">Remove</span>
-    </li>
+        <li>
+            Meet George
+            <button  onclick="vueJS POST method" class="editButton">Edit</button>
+            <button onclick="vueJS DELETE method" class="removeButton">Remove</button>
+        </li>
 
-    <li>
-        Meet George
-        <span  onclick="vueJS POST method" class="editButton">Edit</span>
-        <span onclick="vueJS DELETE method" class="removeButton">Remove</span>
-    </li>
+        <li>
+            Buy eggs
+            <button onclick="vueJS POST method" class="editButton">Edit</button>
+            <button onclick="vueJS DELETE method" class="removeButton">Remove</button>
+        </li>
 
-    <li>
-        Buy eggs
-        <span onclick="vueJS POST method" class="editButton">Edit</span>
-        <span onclick="vueJS DELETE method" class="removeButton">Remove</span>
-    </li>
+        <li>
+            Read a book
+            <button onclick="vueJS POST method" class="editButton">Edit</button>
+            <button onclick="vueJS DELETE method" class="removeButton">Remove</button>
+        </li>
 
-    <li>
-        Read a book
-        <span onclick="vueJS POST method" class="editButton">Edit</span>
-        <span onclick="vueJS DELETE method" class="removeButton">Remove</span>
-    </li>
-
-    <li>
-        Organize office
-        <span onclick="vueJS POST method" class="editButton">Edit</span>
-        <span onclick="vueJS DELETE method" class="removeButton">Remove</span>
-    </li>
-</ul>
+        <li>
+            <label id="listName"> Grocceries</label>
+            <button onclick="vueJS POST method" class="editButton">Edit</button>
+            <button onclick="vueJS DELETE method" class="removeButton">Remove</button>
+        </li>
+    </ul>
+</div> -->
